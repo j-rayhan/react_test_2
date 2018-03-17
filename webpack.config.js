@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/playground/build-it-visible-toggle.js',
+  entry: './src/playground/es6-arrow-fun-2.js',
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js'
