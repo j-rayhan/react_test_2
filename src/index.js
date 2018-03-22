@@ -3,36 +3,32 @@ import ReactDOM from 'react-dom';
 
 const mountNode = document.getElementById('app');
 
-let count = 0;
-const addOne = () => {
-  count++;
-  renderCounterApp();
+const app = {
+  title: 'App Title',
+  subtitle: 'Input Something in the Computer',
+  options: ['one', 'two']
 }
 
-const minusOne = () => {
-  count--;
-  renderCounterApp();
-  console.log('addOne', count);
-}
-const reset = () => {
-  count = 0;
-  renderCounterApp();
-  console.log('reset', count);
+const onFormSubmit = (e) =>{
+  e.preventDefault();
+  console.log('form submitted')
 }
 
 
 
-
-const renderCounterApp = () =>{
 const template = (
   <div>
-    <h1>Count : {count}</h1>
-    <button onClick={addOne}> + </button>
-    <button onClick={minusOne}> - </button>
-    <button onClick={reset}> Reset </button>
+    <h1>{app.title}</h1>
+    {app.subtitle && <p>{app.subtitle}</p>}
+    <p>{(app.options.length > 0)? ('Here are your option'):('NO options')}</p>
+    <ol>
+      <li> Item one </li>
+    </ol>
+    <form onSubmit={onFormSubmit}>
+      <input type="text" name="option" />
+      <button>Add Item</button>
+    </form>
   </div>
 );
-  ReactDOM.render(template,mountNode);
-}
 
-renderCounterApp();
+ReactDOM.render(template,mountNode);
