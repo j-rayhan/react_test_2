@@ -3,6 +3,23 @@ import ReactDOM from 'react-dom';
 
 const mountNode = document.getElementById('app');
 
+// const obj = {
+//     name: 'rayhan',
+//     getName(){
+//         return this.name;
+//     }
+// }
+
+// // const getN = obj.getName();
+// // const getN = obj.getName.bind();
+// // const getN = obj.getName.bind(obj);
+// const getN = obj.getName.bind({name: 'johir'});
+
+// console.log(getN());
+
+// ---------- For more about bind --------
+// search "mdn bind" 
+
 const app = {
     title: 'Indecision App',
     subtitle: 'Input Something in the Computer',
@@ -29,33 +46,59 @@ class Header extends Component{
 }
 
 class Action extends Component{
+    doSomthing(){
+        alert('some action');
+    }
     render(){
         return (<div>
-                Action
+                <button onClick={this.doSomthing}> What should i Do?</button>
             </div>);
     }
 }
 
 class Options extends Component{
+    constructor(props){
+        super();
+        this.doRemoveAll = this.doRemoveAll.bind(this);
+    }
+    doRemoveAll(){
+        console.log(this.props.options);
+        // alert('remove all');
+    }
     render(){
         return (<div>
+            <button onClick={this.doRemoveAll}>Remove All </button>
             {this.props.options.map((option) => <Option key={option} optionTex={option} />)}
         </div>);
     }
 }
 
 class Option extends Component{
+    doRemove(e){
+        alert('remove');
+    }
     render(){
         return (<div>
-                {this.props.optionTex}
+                {this.props.optionTex}<button onClick={this.doRemove}>x</button>
             </div>);
     }
 }
 
 class AddOption extends Component{
+    addOption(e){
+        e.preventDefault();
+
+        const option = e.target.elements.option.value.trim();
+        if (option) {
+            alert(option);
+        }
+    }
     render(){
         return (<div>
-                AddOption
+            <form onSubmit={this.addOption}>
+                <input type="text" name="option" />
+                <button>Add Option</button>
+            </form>
             </div>);
     }
 }
