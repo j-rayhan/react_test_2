@@ -4,63 +4,40 @@ import { createClient } from 'http';
 
 const mountNode = document.getElementById('app');
 
-class Counter extends Component{
+class VisibilityToggle extends Component{
     constructor(props){
         super();
-        this.addOne = this.addOne.bind(this);
-        this.minusOne = this.minusOne.bind(this);
-        this.resetAll = this.resetAll.bind(this);
+        this.toggleVisibility = this.toggleVisibility.bind(this);
         this.state = {
-            count : 0
+            visibility : false
         };
     }
-    addOne(){
-        this.setState((prevState) =>{
+    toggleVisibility(){
+        this.setState((prevState)=>{
             return {
-                count: prevState.count + 1
+                visibility : !prevState.visibility
             };
         });
-    }
-    minusOne(){
-        this.setState((prevState) =>{
-            return {
-                count: prevState.count - 1
-            };
-        });
-    }
-    resetAll(){
-        // First Example
-        this.setState(() =>{
-            return {
-                count: 0
-            };
-        });
-
-        this.setState((prevState) =>{
-            return {
-                count: prevState.count + 1
-            };
-        });
-
-        // Second Example
-
-        // this.setState({
-        //     count: 0
-        // });
-        // this.setState({
-        //     count: this.state.count + 1;
-        // });
     }
     render(){
         return (
             <div>
-                <h1>Count : {this.state.count}</h1>
-                <button onClick={this.addOne}>+1</button>
-                <button onClick={this.minusOne}>-1</button>
-                <button onClick={this.resetAll}>Reset</button>
+                <h1>Visibility Toggle</h1>
+                <button onClick={this.toggleVisibility}>
+                    {
+                        this.state.visibility ? 'Hide details' : 'Show details'
+                    }      
+                </button>
+                {
+                    this.state.visibility && (
+                        <div>
+                            <p>Hey there is some details you can see!</p>
+                        </div>
+                    )
+                }
             </div>
         )
     }
 }
 
-ReactDOM.render(<Counter />,mountNode);
+ReactDOM.render(<VisibilityToggle />,mountNode);
