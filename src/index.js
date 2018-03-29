@@ -29,11 +29,27 @@ class Counter extends Component{
         });
     }
     resetAll(){
+        // First Example
         this.setState(() =>{
             return {
                 count: 0
             };
         });
+
+        this.setState((prevState) =>{
+            return {
+                count: prevState.count + 1
+            };
+        });
+
+        // Second Example
+
+        // this.setState({
+        //     count: 0
+        // });
+        // this.setState({
+        //     count: this.state.count + 1;
+        // });
     }
     render(){
         return (
