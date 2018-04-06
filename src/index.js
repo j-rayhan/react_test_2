@@ -51,7 +51,7 @@ class IndecisionApp extends Component{
     render(){
         return(
             <div>
-            <Header title={app.title} />
+            <Header />
             <Action doSomthing={this.doSomthing} hasOptions={this.state.options.length > 0} />
             <Options options={this.state.options} removeAllOptions={this.removeAllOptions} />
             <AddOption addOption={this.addOption} />
@@ -62,6 +62,10 @@ class IndecisionApp extends Component{
 
 const Header = (props) => {
         return (<div><h1>{props.title}</h1></div>);
+}
+
+Header.defaultProps = {
+    title: 'defatult Title!'
 }
 
 const Action = (props) => {
