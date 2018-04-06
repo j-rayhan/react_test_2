@@ -17,7 +17,7 @@ class IndecisionApp extends Component{
         this.doSomthing = this.doSomthing.bind(this);
         this.addOption = this.addOption.bind(this);
         this.state ={
-            options : []
+            options : props.option
         };
     }
     removeAllOptions(){
@@ -58,6 +58,10 @@ class IndecisionApp extends Component{
             </div>
         );
     }
+}
+
+IndecisionApp.defaultProps = {
+    option : []
 }
 
 const Header = (props) => {
@@ -135,4 +139,4 @@ const User_old = function () {
     
 };
 
-ReactDOM.render(<IndecisionApp />,mountNode);
+ReactDOM.render(<IndecisionApp option={app.options} />,mountNode);
