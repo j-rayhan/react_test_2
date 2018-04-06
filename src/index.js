@@ -60,38 +60,30 @@ class IndecisionApp extends Component{
     }
 }
 
-class Header extends Component{
-    render(){
-        return (<div><h1>{this.props.title}</h1></div>);
-    }
+const Header = (props) => {
+        return (<div><h1>{props.title}</h1></div>);
 }
 
-class Action extends Component{
-    render(){
-        return (<div>
-                <button 
-                onClick={this.props.doSomthing} 
-                disabled={!this.props.hasOptions}
-                > What should i Do?</button>
-            </div>);
-    }
-}
+const Action = (props) => {
+    return (<div>
+        <button 
+        onClick={props.doSomthing} 
+        disabled={!props.hasOptions}
+        > What should i Do?</button>
+    </div>);
+};
 
-class Options extends Component{
-    render(){
+const Options = (props) => {
         return (<div>
-            <button onClick={this.props.removeAllOptions}>Remove All </button>
-            {this.props.options.map((option) => <Option key={option} optionTex={option} />)}
+            <button onClick={props.removeAllOptions}>Remove All </button>
+            {props.options.map((option) => <Option key={option} optionTex={option} />)}
         </div>);
-    }
-}
+};
 
-class Option extends Component{
-    render(){
+const Option = (props) => {
         return (<div>
-                {this.props.optionTex}<button >x</button>
+                {props.optionTex} <button >x</button>
             </div>);
-    }
 }
 
 class AddOption extends Component{
@@ -138,4 +130,4 @@ const User_old = function () {
     
 };
 
-ReactDOM.render(<User name="Rayhan" age={30} />,mountNode);
+ReactDOM.render(<IndecisionApp />,mountNode);
