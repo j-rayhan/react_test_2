@@ -14,6 +14,7 @@ class IndecisionApp extends Component{
     constructor(props){
         super(props);
         this.removeAllOptions = this.removeAllOptions.bind(this);
+        this.removeOption = this.removeOption.bind(this);
         this.doSomthing = this.doSomthing.bind(this);
         this.addOption = this.addOption.bind(this);
         this.state ={
@@ -22,6 +23,14 @@ class IndecisionApp extends Component{
     }
     removeAllOptions(){
         this.setState(() => ({options: []}));
+    }
+    removeOption(optionToDelete){
+        this.setState((prevState) => ({
+            // options: prevState.options.filter((option) => {
+            //     return optionToDelete !== option;
+            // });
+            options: prevState.options.filter((option) => optionToDelete !== option)
+        }));
     }
     doSomthing(){
         // alert('doSomthing');
@@ -45,7 +54,7 @@ class IndecisionApp extends Component{
             <div>
             <Header />
             <Action doSomthing={this.doSomthing} hasOptions={this.state.options.length > 0} />
-            <Options options={this.state.options} removeAllOptions={this.removeAllOptions} />
+            <Options options={this.state.options} removeAllOptions={this.removeAllOptions} removeOption={this.removeOption}/>
             <AddOption addOption={this.addOption} />
             </div>
         );
@@ -77,13 +86,13 @@ const Action = (props) => {
 const Options = (props) => {
         return (<div>
             <button onClick={props.removeAllOptions}>Remove All </button>
-            {props.options.map((option) => <Option key={option} optionTex={option} />)}
+            {props.options.map((option) => (<Option key={option} optionTex={option} removeOption={props.removeOption} />))}
         </div>);
 };
 
 const Option = (props) => {
         return (<div>
-                {props.optionTex} <button >x</button>
+                {props.optionTex} <button onClick={(e) => {props.removeOption(props.optionTex)}}>x</button>
             </div>);
 }
 
