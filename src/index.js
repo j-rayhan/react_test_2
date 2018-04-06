@@ -123,4 +123,19 @@ class AddOption extends Component{
     }
 }
 
-ReactDOM.render(<IndecisionApp />,mountNode);
+//StateLess functional Component
+const User = (props) => {
+    return(
+        <div>
+            <p>Name: {props.name}</p>
+            <p>Age: {props.age}</p>
+        </div>
+    );
+
+};
+
+const User_old = function () {
+    
+};
+
+ReactDOM.render(<User name="Rayhan" age={30} />,mountNode);
