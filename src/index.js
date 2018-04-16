@@ -21,6 +21,20 @@ class IndecisionApp extends Component{
             options : props.option
         };
     }
+    // Lifecycle method only use in calss base component 
+    // For more about google (react component lifecycle)
+    componentDidMount(){
+        // It's call when component mount 
+        console.log('Component did Mount');
+    }
+    componentDidUpdate(prevProps, prevState){
+        // It's will call when component change state or props 
+        console.log('Component did update ok');
+    }
+    componentWillUnmount(){
+        // It's will call when switch pages or render something complletly new 
+        console.log("component will unmount");
+    }
     removeAllOptions(){
         this.setState(() => ({options: []}));
     }
@@ -85,7 +99,7 @@ const Action = (props) => {
 
 const Options = (props) => {
         return (<div>
-            <button onClick={props.removeAllOptions}>Remove All </button>
+            <button onClick={props.removeAllOptions}>Remove All ok </button>
             {props.options.map((option) => (<Option key={option} optionTex={option} removeOption={props.removeOption} />))}
         </div>);
 };
