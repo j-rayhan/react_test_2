@@ -18,23 +18,38 @@ class IndecisionApp extends Component{
         this.doSomthing = this.doSomthing.bind(this);
         this.addOption = this.addOption.bind(this);
         this.state ={
-            options : props.option
+            options : props.options
         };
     }
     // Lifecycle method only use in calss base component 
     // For more about google (react component lifecycle)
     componentDidMount(){
         // It's call when component mount 
-        console.log('Component did Mount');
+        // console.log('featch data');
+        // try catch use of get valid json formate data
+        try {
+            const json = localStorage.getItem('options');
+            const options = JSON.parse(json); // json to js {}
+            if(options){
+                this.setState(() => ({options}));
+            }
+        } catch (error) {
+            // Do nothing at all
+        }
     }
     componentDidUpdate(prevProps, prevState){
         // It's will call when component change state or props 
-        console.log('Component did update ok');
+        // This action do not fire if have not any change
+        if(prevState.options.length !== this.state.options.length){
+            const json = JSON.stringify(this.state.options); // js {} to json
+            localStorage.setItem('options',json);
+        }
     }
     componentWillUnmount(){
         // It's will call when switch pages or render something complletly new 
         console.log("component will unmount");
     }
+    // LocalStorage only storeg string data with key value
     removeAllOptions(){
         this.setState(() => ({options: []}));
     }
@@ -76,7 +91,7 @@ class IndecisionApp extends Component{
 }
 
 IndecisionApp.defaultProps = {
-    option : []
+    options : []
 }
 
 const Header = (props) => {
@@ -99,7 +114,8 @@ const Action = (props) => {
 
 const Options = (props) => {
         return (<div>
-            <button onClick={props.removeAllOptions}>Remove All ok </button>
+            <button onClick={props.removeAllOptions}>Remove All </button>
+            {props.options.length === 0 && <p> Please add an option to get started!</p>}
             {props.options.map((option) => (<Option key={option} optionTex={option} removeOption={props.removeOption} />))}
         </div>);
 };
@@ -125,6 +141,10 @@ class AddOption extends Component{
 
         const error = this.props.addOption(option);
         this.setState(() => ({error}));
+
+        if (!error) {
+            e.target.elements.option.value = '';
+        }
     }
     render(){
         return (<div>
