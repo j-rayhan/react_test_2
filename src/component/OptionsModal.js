@@ -12,18 +12,18 @@ const customStyles = {
     }
   };
 
-const OptionsModal = (props) => {
-    return (<Modal
+const OptionsModal = (props) => (
+  <Modal
     isOpen={!!props.selectedOption}
     onRequestClose={props.handelCloseModel}
     style={customStyles}
     contentLabel="Example Modal"
   >
-    <h2>Hello</h2>
-    <button onClick={props.handelCloseModel}>close</button>
-      {props.selectedOption && <p>{props.selectedOption}</p>}
-    </Modal>)
-}
+  <h2>Hello</h2>
+  <button onClick={props.handelCloseModel}>close</button>
+    {props.selectedOption && <p>{props.selectedOption}</p>}
+  </Modal>
+);
 
 export default OptionsModal;
 
