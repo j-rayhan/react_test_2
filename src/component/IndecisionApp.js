@@ -3,10 +3,12 @@ import Header from './Header';
 import Action from './Action';
 import AddOption from './AddOption';
 import Options from './Options';
+import OptionsModal from './OptionsModal';
 
 class IndecisionApp extends Component{
     state ={
-        options : []
+        options : [],
+        selectedOption: undefined
     };
     componentDidMount = () => {
         // It's call when component mount 
@@ -47,7 +49,7 @@ class IndecisionApp extends Component{
         // alert('doSomthing');
         const randomNum = Math.floor(Math.random() * this.state.options.length);
         const option = this.state.options[randomNum];
-        alert(option);
+        this.setState(() => ({selectedOption: option}))
     }
     addOption = (option) => {
         // console.log(option);
@@ -60,6 +62,10 @@ class IndecisionApp extends Component{
         }
         
     }
+    handelCloseModel = () => {
+        // console.log(selectedOption);
+        this.setState(() => ({selectedOption: undefined}));
+      }
     render(){
         return(
             <div>
@@ -67,6 +73,7 @@ class IndecisionApp extends Component{
             <Action doSomthing={this.doSomthing} hasOptions={this.state.options.length > 0} />
             <Options options={this.state.options} removeAllOptions={this.removeAllOptions} removeOption={this.removeOption}/>
             <AddOption addOption={this.addOption} />
+            <OptionsModal selectedOption={this.state.selectedOption} handelCloseModel={this.handelCloseModel}/>
             </div>
         );
     }
