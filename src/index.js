@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import IndecisionApp from './comonent/IndecisionApp';
+import IndecisionApp from './component/IndecisionApp';
 import { createClient } from 'http';
 
 const mountNode = document.getElementById('app');
@@ -11,19 +11,21 @@ const app = {
     options: ['First Option', 'Second Option']
   }
 
-//StateLess functional Component
-const User = (props) => {
-    return(
-        <div>
-            <p>Name: {props.name}</p>
-            <p>Age: {props.age}</p>
-        </div>
-    );
-
+//transform-class-properties example
+class User {
+    constructor(){
+        this.name = "rayhan";
+    }
 };
 
-const User_old = function () {
-    
-};
+class NewUser {
+    name = 'johir';
+}
+
+const oldUser = new User();
+console.log(oldUser);
+
+const newUser = new NewUser();
+console.log(newUser);
 
 ReactDOM.render(<IndecisionApp option={app.options} />,mountNode);

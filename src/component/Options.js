@@ -1,5 +1,5 @@
 import React from 'react';
-// import Option from './Option';
+import Option from './Option';
 
 const Options = (props) => {
     return (<div>
@@ -9,10 +9,6 @@ const Options = (props) => {
     </div>);
 };
 
-const Option = (props) => {
-    return (<div>
-            {props.optionTex} <button onClick={(e) => {props.removeOption(props.optionTex)}}>x</button>
-        </div>);
-}
+
 
 export default Options;
