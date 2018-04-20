@@ -15,17 +15,29 @@ const app = {
 class User {
     constructor(){
         this.name = "rayhan";
+        // Error fix {Cannot read property 'name' of undefined}
+        this.getGreeting = this.getGreeting.bind(this);
+    }
+    getGreeting(){
+        return `Hi this is ${this.name}`;
     }
 };
 
+const oldUser = new User();
+const getGree = oldUser.getGreeting;
+console.log(getGree());
+
+
 class NewUser {
     name = 'johir';
+    getGreeting = () =>  {
+        return `Hi this is ${this.name}`;
+    }
 }
 
-const oldUser = new User();
-console.log(oldUser);
+
 
 const newUser = new NewUser();
-console.log(newUser);
+console.log(newUser.getGreeting());
 
 ReactDOM.render(<IndecisionApp option={app.options} />,mountNode);

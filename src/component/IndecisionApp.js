@@ -5,19 +5,10 @@ import AddOption from './AddOption';
 import Options from './Options';
 
 class IndecisionApp extends Component{
-    constructor(props){
-        super(props);
-        this.removeAllOptions = this.removeAllOptions.bind(this);
-        this.removeOption = this.removeOption.bind(this);
-        this.doSomthing = this.doSomthing.bind(this);
-        this.addOption = this.addOption.bind(this);
-        this.state ={
-            options : props.options
-        };
-    }
-    // Lifecycle method only use in calss base component 
-    // For more about google (react component lifecycle)
-    componentDidMount(){
+    state ={
+        options : []
+    };
+    componentDidMount = () => {
         // It's call when component mount 
         // console.log('featch data');
         // try catch use of get valid json formate data
@@ -31,7 +22,7 @@ class IndecisionApp extends Component{
             // Do nothing at all
         }
     }
-    componentDidUpdate(prevProps, prevState){
+    componentDidUpdate = (prevProps, prevState) => {
         // It's will call when component change state or props 
         // This action do not fire if have not any change
         if(prevState.options.length !== this.state.options.length){
@@ -39,29 +30,26 @@ class IndecisionApp extends Component{
             localStorage.setItem('options',json);
         }
     }
-    componentWillUnmount(){
+    componentWillUnmount = () => {
         // It's will call when switch pages or render something complletly new 
         console.log("component will unmount");
     }
     // LocalStorage only storeg string data with key value
-    removeAllOptions(){
+    removeAllOptions = () => {
         this.setState(() => ({options: []}));
     }
-    removeOption(optionToDelete){
+    removeOption = (optionToDelete) => {
         this.setState((prevState) => ({
-            // options: prevState.options.filter((option) => {
-            //     return optionToDelete !== option;
-            // });
             options: prevState.options.filter((option) => optionToDelete !== option)
         }));
     }
-    doSomthing(){
+    doSomthing = () => {
         // alert('doSomthing');
         const randomNum = Math.floor(Math.random() * this.state.options.length);
         const option = this.state.options[randomNum];
         alert(option);
     }
-    addOption(option){
+    addOption = (option) => {
         // console.log(option);
         if (!option) {
             return 'Enter a Valid Option';
