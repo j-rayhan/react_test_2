@@ -9,7 +9,7 @@ const Layout = (props) => {
     return (
         <div>
             <p>Header</p>
-                {props.content}
+                {props.children}
             <p>footer</p>
         </div>
     );
@@ -23,4 +23,4 @@ const template = (
 )
 
 
-ReactDOM.render(<Layout content={template}/>,mountNode);
+ReactDOM.render(<Layout><p>This is inline</p></Layout>,mountNode);
