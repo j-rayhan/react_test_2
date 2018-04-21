@@ -1,4 +1,2 @@
-$brand-color: blue;
-* {
-  color: $brand-color;
-}
+@import "./base/base"; // pursul file start with '_'
+@import "./components/header";

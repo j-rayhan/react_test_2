@@ -2,13 +2,13 @@ import React from 'react';
 
 
 const Header = (props) => (
-    <div><h1>{props.title}</h1>
-    {props.subtitle && <h1>{props.subtitle}</h1>}
+    <div className="header"><h1 className="header__title">{props.title}</h1>
+    {props.subtitle && <div className="header__subtitle">{props.subtitle}</div>}
     </div>
 );
 
 Header.defaultProps = {
-title: 'defatult Title!'
+title: 'Defatult Title!'
 }
 
 export default Header;
