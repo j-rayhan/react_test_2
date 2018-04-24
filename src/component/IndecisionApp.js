@@ -70,11 +70,13 @@ class IndecisionApp extends Component{
         const subtitle = 'Put your life in the hands of a computer';
         return(
             <div>
-            <Header subtitle={subtitle}/>
-            <Action doSomthing={this.doSomthing} hasOptions={this.state.options.length > 0} />
-            <Options options={this.state.options} removeAllOptions={this.removeAllOptions} removeOption={this.removeOption}/>
-            <AddOption addOption={this.addOption} />
-            <OptionsModal selectedOption={this.state.selectedOption} handelCloseModel={this.handelCloseModel}/>
+                <Header subtitle={subtitle}/>
+                <div className="container">
+                    <Action doSomthing={this.doSomthing} hasOptions={this.state.options.length > 0} />
+                    <Options options={this.state.options} removeAllOptions={this.removeAllOptions} removeOption={this.removeOption}/>
+                    <AddOption addOption={this.addOption} />
+                    <OptionsModal selectedOption={this.state.selectedOption} handelCloseModel={this.handelCloseModel}/>
+                </div>
             </div>
         );
     }
