@@ -1,0 +1,39 @@
+// Widget
+.widget {
+  background: $light-blue;
+  margin-bottom: $l-size;
+}
+
+// Widget Header
+.widget-header {
+  background: $blue;
+  color: $off-white;
+  display: flex;
+  justify-content: space-between;
+  padding: $m-size;
+}
+
+//Chalange
+// 1. setup an element selector for widget-header
+// 2. set margin
+// 3. use the class
+.widget-header_title {
+  margin: 0;
+}
+
+// Now do your self
+
+// create a widget element selector (message) -use it on the p tag
+// off-wite color
+// no margin
+// l-size padding on all sides
+// center the text using -text-align: center;
+// set the bottom border to a 1px solid border lighted version of light-blue 10%
+
+.widget__message {
+  border-bottom: 1.5px solid lighten($light-blue, 10%);
+  color: $off-white;
+  margin: 0;
+  padding: $l-size;
+  text-align: center;
+}
