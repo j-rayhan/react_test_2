@@ -8,7 +8,13 @@ const Options = (props) => (
             <button className="button button--link" onClick={props.removeAllOptions}>Remove All </button>
         </div>
         {props.options.length === 0 && <p className="widget__message"> Please add an option to get started!</p>}
-        {props.options.map((option) => (<Option key={option} optionTex={option} removeOption={props.removeOption} />))}
+        {props.options.map((option, index) => (
+            <Option 
+            key={option} 
+            count={index + 1}
+            optionTex={option} 
+            removeOption={props.removeOption} 
+            />))}
     </div>
 );
 
