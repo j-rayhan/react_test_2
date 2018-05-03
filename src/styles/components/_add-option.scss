@@ -7,6 +7,7 @@
 
 .add-option {
   display: flex;
+  flex-direction: column;
   padding: $m-size;
 }
 
@@ -15,6 +16,19 @@
   border: none;
   background: rgb(48, 35, 35);
   color: $off-white;
-  margin-right: $s-size;
+  margin: 0 0 $s-size 0;
   padding: $s-size;
+}
+
+// first example for mobile
+@media (min-width: $desktop-breakpoint) {
+  // * {
+  //   color: #f00;
+  // }
+  .add-option {
+    flex-direction: row;
+  }
+  .add-option__input {
+    margin: 0 $s-size 0 0;
+  }
 }
