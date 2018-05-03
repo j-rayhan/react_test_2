@@ -16,12 +16,13 @@ const OptionsModal = (props) => (
   <Modal
     isOpen={!!props.selectedOption}
     onRequestClose={props.handelCloseModel}
-    style={customStyles}
     contentLabel="Example Modal"
+    closeTimeoutMS={200}
+    className="modal"
   >
-  <h2>Hello</h2>
-  <button onClick={props.handelCloseModel}>close</button>
-    {props.selectedOption && <p>{props.selectedOption}</p>}
+  <h2 className="modal_title">Hello</h2>
+  {props.selectedOption && (<p className="modal__body">{props.selectedOption}</p>)}
+  <button className="button" onClick={props.handelCloseModel}>close</button>
   </Modal>
 );
 
