@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EditPage = (props) => {
+const ProtfolioItemPage = (props) => {
     console.log(props);
     return (
         <div>
@@ -9,4 +9,4 @@ const EditPage = (props) => {
     );
 };
 
-export default EditPage;
+export default ProtfolioItemPage;
